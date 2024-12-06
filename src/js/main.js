@@ -76,3 +76,37 @@ function renderSearchResults(amiibo) {
 
 const amiiboData = getAmiiboDataByName();
 renderSearchResults(amiiboData);
+//Search Bar coding
+const searchBar = document.getElementById('search-bar');
+const resultsContainer = document.getElementById('results');
+
+searchBar.addEventListener('input', (event) => {
+  const searchTerm = event.target.value;
+  if (searchTerm.length > 0) {
+    fetchData(searchTerm);
+  } else {
+    resultsContainer.innerHTML = ''; 
+  }
+});
+
+function fetchData(searchTerm) {
+    fetch(`https://www.amiiboapi.com/api/amiibo/search?q=${searchTerm}`)
+      .then(response => response.json())
+      .then(data => displayResults(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+function displayResults(data) {
+    resultsContainer.innerHTML = ''; // Clear previous results
+  
+    if (data.length === 0) {
+      resultsContainer.innerHTML = '<p>No results found.</p>';
+      return;
+    }
+  
+    data.forEach(item => {
+      const resultElement = document.createElement('div');
+      resultElement.textContent = item.name; // Display relevant data from the API response
+      resultsContainer.appendChild(resultElement);
+    });
+  }
