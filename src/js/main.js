@@ -76,7 +76,7 @@ function renderSearchResults(amiibo) {
 
 const amiiboData = getAmiiboDataByName();
 renderSearchResults(amiiboData);
-//Search Bar coding
+//Search Bar coding implementation
 const searchBar = document.getElementById('search-bar');
 const resultsContainer = document.getElementById('results');
 
