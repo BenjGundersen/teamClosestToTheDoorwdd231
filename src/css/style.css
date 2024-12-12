@@ -116,15 +116,15 @@ main {
 
 @media screen and (max-width: 300px) {
     .carouselContainer{
-        height: 25vh;
+        height: 50vh;
     }
     .carousel-item img{
-        height: 100px;
+        height: 200px;
     }
     .amiibo-logo{
-        max-width: 25px;
+        max-width: 50px;
     }
     .ebay-logo{
-        max-width: 20px;
+        max-width: 37px;
     }
 }
