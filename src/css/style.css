@@ -1,3 +1,7 @@
+body{
+    max-width: 100%;
+}
+
 /* Image Carousel styling */
 .carouselContainer {
     display: flex;
@@ -78,4 +82,49 @@ main {
     display: flex;
     background-color: rgb(185, 244, 255);
     justify-content: space-between;
+}
+
+@media screen and (min-width: 700px) {
+    .carouselContainer{
+        height: 75vh;
+    }
+    .carousel-item img{
+        height: 300px;
+    }
+    .amiibo-logo{
+        max-width: 75px;
+    }
+    .ebay-logo{
+        max-width: 56px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .carouselContainer{
+        height: 50vh;
+    }
+    .carousel-item img{
+        height: 200px;
+    }
+    .amiibo-logo{
+        max-width: 50px;
+    }
+    .ebay-logo{
+        max-width: 37px;
+    }
+}
+
+@media screen and (min-width: 300px) {
+    .carouselContainer{
+        height: 25vh;
+    }
+    .carousel-item img{
+        height: 100px;
+    }
+    .amiibo-logo{
+        max-width: 25px;
+    }
+    .ebay-logo{
+        max-width: 20px;
+    }
 }
