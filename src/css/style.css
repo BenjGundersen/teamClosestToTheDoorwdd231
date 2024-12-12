@@ -1,6 +1,5 @@
 body{
     max-width: 100%;
-    max-height: 100%;
 }
 
 /* Image Carousel styling */
@@ -101,21 +100,6 @@ main {
 }
 
 @media screen and (max-width: 500px) {
-    .carouselContainer{
-        height: 50vh;
-    }
-    .carousel-item img{
-        height: 200px;
-    }
-    .amiibo-logo{
-        max-width: 50px;
-    }
-    .ebay-logo{
-        max-width: 37px;
-    }
-}
-
-@media screen and (max-width: 300px) {
     .carouselContainer{
         height: 50vh;
     }
