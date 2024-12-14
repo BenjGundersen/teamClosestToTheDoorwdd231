@@ -1,15 +1,5 @@
 const baseUrl = "https://www.amiiboapi.com/api/amiibo/";
 
-(async function fetchAndRenderAmiibo() {
-    const amiiboData = await getAmiiboDataByName();
-    renderSearchResults(amiiboData.amiibo);
-})();
-
-async function getAmiiboDataByName() {
-    const amiiboData = await getJson("?name=chrom"); // TODO: can probably find a way to get input from the search bar instead of it searching for "chrom" everytime
-    return amiiboData;
-}
-
 async function getJson(url) {
     const options = {
         method: "GET"
@@ -54,33 +44,10 @@ getRandomAmiibos(baseUrl, 3).then(randomItems => {
 });
 
 
-function  searchResultsTemplate(amiibo) {
-    return`<figure class="search-result">
-    <a href=""><img src="${amiibo.image}" alt="Image of ${amiibo.character}"></a>
-    <a href=""><h2>${amiibo.character} - ${amiibo.amiiboSeries}</h2></a>
-    </figure>
-    `;
-}
-
-function renderSearchResults(amiibo) {
-    const searchResultsElement = document.querySelector(".search-results-container");
-    searchResultsElement.innerHTML = "";
-    if (Array.isArray(amiibo) && amiibo.length > 0) {
-        let html = amiibo.map(searchResultsTemplate);
-        searchResultsElement.innerHTML = html.join("");
-    } else {
-        searchResultsElement.innerHTML = "<p>No results found.</p>";
-    }
-}
-
-
-const amiiboData = getAmiiboDataByName();
-renderSearchResults(amiiboData);
-
 //Search Bar coding implementation
 const searchBar = document.getElementById('search-bar');
 const resultsContainer = document.getElementById('results');
-
+ /*
 searchBar.addEventListener('input', (event) => {
   const searchTerm = event.target.value;
   if (searchTerm.length > 0) {
@@ -89,6 +56,7 @@ searchBar.addEventListener('input', (event) => {
     resultsContainer.innerHTML = ''; 
   }
 });
+*/
 
 function fetchData(searchTerm) {
     fetch(`https://www.amiiboapi.com/api/amiibo/search?q=${searchTerm}`)
@@ -121,7 +89,12 @@ searchButton.addEventListener('click', function() {
   // get the search input value
   const searchTerm = searchInput.value;
   // do something with the search term (e.g. redirect to a search results page)
-  console.log(`Searching for "${searchTerm}"...`);
+  if (searchTerm !== "") {
+    const searchUrl = `searchResults.html?query=${encodeURIComponent(searchTerm)}`;
+    window.open(searchUrl, "_blank")
+  } else {
+    alert("Please enter a search term.")
+  }
 });
 
 // add event listener to the input (if you want to trigger the search on Enter keypress)
